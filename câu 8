@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+const int MAX = 6; // số phần tử tối đa trong stack
+
+class Stack {
+private:
+int top;
+int arr[MAX];
+public:
+Stack() {// Constructor để khởi tạo stack rỗng ban đầu
+top = -1;
+for (int i = 0; i < MAX; i++) {
+arr[i] = 0;
+}
+}
+
+bool isFull() { // Kiểm tra stack đã đầy hay chưa
+if (top == MAX - 1) {
+return true;
+}
+else {
+return false;
+}
+}
+
+bool isEmpty() { // Kiểm tra stack đã rỗng hay chưa
+if (top == -1) {
+return true;
+}
+else {
+return false;
+}
+}
+
+void push(int val) { // Thêm một phần tử vào đỉnh của stack
+if (isFull()) {
+cout << "Stack overflow!" << endl;
+}
+else {
+top++;
+arr[top] = val;
+}
+}
+
+int pop() { // Loại bỏ phần tử ở đỉnh của stack và trả về giá trị của nó
+if (isEmpty()) {
+cout << "Stack underflow!" << endl;
+return 0;
+}
+else {
+int popValue = arr[top];
+arr[top] = 0;
+top--;
+return popValue;
+}
+}
+
+int peek() { // Lấy giá trị của phần tử ở đỉnh của stack
+if (isEmpty()) {
+cout << "Stack is empty!" << endl;
+return 0;
+}
+else {
+return arr[top];
+}
+}
+
+void display() { // In ra các phần tử trong stack
+cout << "Elements in stack: ";
+for (int i = 0; i < MAX; i++) {
+cout << arr[i] << " ";
+}
+cout << endl << endl;
+}
+};
+
+int main() {
+Stack s;
+int a[MAX] = { 41, 23, 4, 14, 56, 1 };
+for (int i = 0; i < MAX; i++) {
+s.push(a[i]);
+}
+cout << "Top element: " << s.peek() << endl;
+s.pop();
+cout << "Elements after popping top element: " << endl;
+s.display();
+return 0;
+}
+Kết quả chạy chương trình sẽ là:
+Top element: 1
+Elements after popping top element:
+Elements in stack: 41 23 4 14 56 0
