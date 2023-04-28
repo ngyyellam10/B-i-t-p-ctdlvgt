@@ -1,0 +1,12 @@
+python
+def recursive_even_sum(arr, i=0):
+if i >= len(arr):
+return 0
+if arr[i] % 2 == 0:
+return arr[i] + recursive_even_sum(arr, i+1)
+else:
+return recursive_even_sum(arr, i+1)
+python
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_sum = recursive_even_sum(arr)
+print(even_sum) # Output: 30
